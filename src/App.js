@@ -1,8 +1,8 @@
 
 import './App.css';
 import { createTheme, MantineProvider } from '@mantine/core';
-import Header from "./pages/Header.jsx";
-import Login from "./pages/Login.tsx";
+
+import {Login} from "./pages/Login.tsx";
 
 
 const theme = createTheme({
@@ -14,7 +14,7 @@ const theme = createTheme({
 
 function App() {
   return (
-    <MantineProvider theme={theme}>
+    <MantineProvider theme={theme} style={{alignItems: 'center'}}>
       <Login/>
     </MantineProvider>
     

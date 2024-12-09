@@ -10,7 +10,7 @@ function TooltipIcon() {
       position="top-end"
       withArrow
       transitionProps={{ transition: 'pop-bottom-right' }}
-      children
+      
     >
       <Text component="div" c="dimmed" style={{ cursor: 'help' }}>
         <Center>
@@ -41,7 +41,7 @@ function TooltipFocus() {
       opened={opened}
       color={valid ? 'teal' : undefined}
       withinPortal
-      children
+      
     >
       <PasswordInput
         label="Tooltip shown onFocus"
@@ -59,9 +59,13 @@ function TooltipFocus() {
 
 export function Login() {
   return (
-    <>
+    <div className="bg-red-500">
+      <h1 className="text-3xl font-bold underline bg-blue-500">
+        Login Here!
+      </h1>
       <TooltipIcon />
       <TooltipFocus />
-    </>
+    </div>
   );
 }
+
