@@ -1,6 +1,6 @@
 import logo from '../logo.svg';
 import React from 'react';
-import SideNav from "./SideNavigation.tsx";
+import {SideNav} from "./SideNavigation.tsx";
 
 const DentalHeader = () =>{
     return (

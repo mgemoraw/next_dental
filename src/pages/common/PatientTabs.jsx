@@ -1,6 +1,7 @@
 import React from 'react';
 import {Tabs} from "@mantine/core";
-import { IconHome, IconManFilled } from '@tabler/icons-react';
+import {Link} from 'react-router-dom';
+import { IconHome, IconManFilled, IconAlarm} from '@tabler/icons-react';
 
 
 function PatientTab(){
@@ -15,7 +16,10 @@ function PatientTab(){
                     <a className="#" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-blue-500 dark:hover:text-gray-300 group"><IconManFilled/>Patients</a>
                 </li>
                 <li className="me-2">
-                    <a href="#" className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-blue-500 dark:hover:text-gray-300 group">Appointments</a>
+                    <a href="#" className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-blue-500 dark:hover:text-gray-300 group">
+                        <IconAlarm/>
+                        Appointments
+                    </a>
                 </li>
                 <li className="me-2">
                     <a href="#" className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-blue-500 dark:hover:text-gray-300 group">
