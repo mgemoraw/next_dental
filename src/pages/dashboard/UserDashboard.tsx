@@ -6,6 +6,7 @@ import PatientTab from '../common/PatientTabs.jsx';
 import { TabVertical, SideNav} from '../common/SideNavigation.tsx';
 import SideBar from "../common/SideBar.jsx";
 import {Button, Autocomplete} from "@mantine/core";
+import { CreatePatientModal } from '../modals/CreatePatientModal.tsx';
 
 
 const UserDashboard = () => {
@@ -27,18 +28,13 @@ const UserDashboard = () => {
 
                 <div className="flex flex-row-reverse space-x-4 space-x-reverse ...">
 
-                <Button >
-                    Add Patient
-                </Button>
+                <CreatePatientModal/>
+
 
                 </div>
                 
                 <PatientTab/>
-                <Autocomplete
-                    className="mt-3 pt-3 rounded-full..."
-                    placeholder='Search Patient...'
-                    onChange={handleSearch}
-                />
+                
             </div>
             
         </div>

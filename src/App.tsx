@@ -10,6 +10,7 @@ import Login from './pages/Login.tsx';
 import Signup from './pages/Signup.tsx';  
 import {Unauthorized, Error404} from './pages/unauthorized/Unauthorized.tsx';  
 import {isAuthenticated} from "./auth/user.tsx";
+import Layout from './pages/shared/Layout.tsx';
 
 
 const App = () => {  
@@ -21,7 +22,7 @@ const App = () => {
                 isAuthenticated() ? <AdminDashboard /> : <Unauthorized/>
                 }/> */}
 
-                <Route path="/" element={<Home />} /> 
+                <Route path="/" element={<Layout />} /> 
                 <Route path="/login" element={<Login />} />  
                 <Route path="/unauthorized" element={<Unauthorized />} />  
                 <Route path="/signup" element={<Signup/>} />
