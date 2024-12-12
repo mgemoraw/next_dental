@@ -14,8 +14,7 @@ const UserDashboard = () => {
     const handleSearch = () => {
         console.log("Searching...");
     };
-
-
+    
 
     return (
         <div className="flex h-screen">

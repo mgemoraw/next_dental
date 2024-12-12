@@ -28,7 +28,7 @@ export const CreatePatientModal = () => {
 
       {isModalOpen && (
         <div
-          className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75"
+          className="fixed inset-0 z-50 fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75"
         >
           <div className="relative p-4 w-full max-w-md">
             <div className="bg-white rounded-lg shadow">

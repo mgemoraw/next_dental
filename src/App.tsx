@@ -22,7 +22,13 @@ const App = () => {
                 isAuthenticated() ? <AdminDashboard /> : <Unauthorized/>
                 }/> */}
 
-                <Route path="/" element={<Layout />} /> 
+                
+                <Route path="/" element={
+                    <ProtectedRoute allowedRoles={["user"]}>
+                        <Layout />
+                    </ProtectedRoute>
+                    } 
+                /> 
                 <Route path="/login" element={<Login />} />  
                 <Route path="/unauthorized" element={<Unauthorized />} />  
                 <Route path="/signup" element={<Signup/>} />
