@@ -18,3 +18,16 @@ code {
     monospace;
 }
 
+.tooltip {  
+    visibility: hidden;  
+    background-color: black;  
+    color: white;  
+    text-align: center;  
+    border-radius: 6px;  
+    padding: 5px;  
+    position: absolute;  
+    z-index: 1;  
+}  
+.icon:hover + .tooltip {  
+    visibility: visible;  
+}  

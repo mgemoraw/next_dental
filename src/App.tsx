@@ -17,10 +17,12 @@ const App = () => {
     return (  
         <AuthProvider children={undefined} >  
             <Routes>  
-                {/* <Route path="/admin"
+                {/*
+                 <Route path="/admin"
                 element={
                 isAuthenticated() ? <AdminDashboard /> : <Unauthorized/>
-                }/> */}
+                }/> 
+                */}
 
                 
                 <Route path="/" element={

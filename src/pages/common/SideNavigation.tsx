@@ -4,11 +4,8 @@ import { logOut } from '../../auth/user.tsx';
 import {Button} from "@mantine/core";
 import {
     IconManFilled, 
-    IconMenu,
+    IconMenu2,
     IconUserFilled,
-    IconChartHistogram,
-    IconServicemark,
-    IconCapRounded,
     IconLogout,
     IconHomeFilled,
     IconUsers,
@@ -16,8 +13,10 @@ import {
     IconChartBar,
     
 } from "@tabler/icons-react";
-import { Home, Settings, Tools, Asset } from "tabler-icons-react";
-// import * as Icons from "../../icons/dentalIcons.jsx";
+import { Home, Settings, Tools, LayoutDashboard as IconDashboard } from "tabler-icons-react";
+// import doctor2 from "../../icons/doctor2.PNG";
+
+import products from "../../assets/icons/products.png";
 
 
 const pages = {
@@ -57,7 +56,12 @@ const adminSidebarLinks = [
   
 function SideNav() {
     const [isExpanded, setIsExpanded] = useState(false);
+    const [isTooltipVissible, setTooltipVissible] = useState(false);
 
+
+    const switchTabs = () => {
+        console.log("Switching tabs");
+    }
     const handleLogout = () => {
         logOut();
       }
@@ -66,53 +70,57 @@ function SideNav() {
         setIsExpanded(!isExpanded);
     };
   return (
-    
     <>
-    <div className="flex items-center p-4">
+    <div className="flex items-center p-4" title="Menu">
         <Link to="/user" onClick={toggleSidebar} className="text-xl font-bold ml-4">
-        <IconMenu/>
+        <IconMenu2/>
         </Link>
     </div>
       
     <div className={`bg-gray-100 text-gray-800 h-screen ${isExpanded ? 'w-64' : 'w-20 sm:block'} sm:block md:block lg:block xl:block `}>
         {/* bg-blue-500 text-gray-800 h-screen w-64 fixed top-0 left-0 flex flex-col */}
         
-        <div className="p-4 hover:bg-blue-100">
-        <Link to="/user" className="flex ml-3">
-            {!isExpanded ? <IconHomeFilled className="mr-3"/> : <><IconHomeFilled className="mr-3"/>Home</>}
+        <div className="p-4 hover:bg-blue-100" title="Home">
+            <Link to="/user" className="flex ml-3">
+                {!isExpanded ? <IconHomeFilled className="icon mr-3" /> : <><IconHomeFilled className="mr-3"/>Home</>}
             </Link>
+            {/* <span className="tooltip">Home</span> */}
         </div>
 
-        <div className="p-4 hover:bg-blue-100 space-x-4 items-center justify-center">
+        <div className="p-4 hover:bg-blue-100 space-x-4 items-center justify-center" title="Dashboard">
             <Link to="/user" className="flex ml-3 ">
-                {!isExpanded ? <IconChartHistogram className="mr-3"/> :<><IconChartHistogram className="mr-3"/>Dashboard</>}
+                {!isExpanded ? <IconDashboard className="icon mr-3"/> :<><IconDashboard className="mr-3"/>Dashboard</>}
             </Link>
+            {/* <span className="tooltip">Dashboard</span> */}
         </div>
-        <div className="p-4 hover:bg-blue-100">
+        <div className="p-4 hover:bg-blue-100" title="Employees">
             <Link to="/employees" className="flex ml-3">
-                {!isExpanded ? <IconUserFilled className="mr-3"/> : <><IconUserFilled className="mr-3"/> Employees</>}
+                {!isExpanded ? <IconUserFilled className="icon mr-3"/> : <><IconUserFilled className="mr-3"/> Employees</>}
             </Link>
+            {/* <span className="tooltip">Employees</span> */}
         </div>
 
-        <div className="p-4 hover:bg-blue-100">
+        <div className="p-4 hover:bg-blue-100" title="Patients">
             <Link to="/patients" className="flex ml-3">
-                {!isExpanded ? <IconManFilled className="mr-3"/> : <><IconManFilled className="mr-3"/> Patients</>}
+                {!isExpanded ? <IconUsers className="icon mr-3"/> : <><IconUsers className="mr-3"/> Patients</>}
             </Link>
+            {/* <span className="tooltip">Patients</span> */}
         </div>
-        <div className="p-4 hover:bg-blue-100">
+        <div className="p-4 hover:bg-blue-100" title="Products">
             <Link to="/products"  className="flex ml-3 ">
-                {!isExpanded ? <Tools className="mr-3"/> : <><Tools className="mr-3"/> Products</>}
+                {!isExpanded ? <products className="icon mr-3"/> : <><Tools className="mr-3"/> Products</>}
             </Link>
+            {/* <span className="tooltip">Products</span> */}
         </div>
-        <div className="p-4 hover:bg-blue-100">
+        <div className="p-4 hover:bg-blue-100" title="Settings">
             <Link to="/services"  className="flex ml-3"> 
             {!isExpanded ? <Settings className="mr-3"/> : <><Settings className="mr-3"/> Settings</>}
             </Link>
         </div>
     
-        <div className="p-4 hover:bg-blue-100">
+        <div className="p-4 hover:bg-blue-100" title="Logout">
             <Link to="/" onClick={handleLogout} className="flex ml-3">
-                {!isExpanded ? <IconLogout className="mr-3"/> : <><IconLogout className="mr-3"/> Logout</>}
+                {!isExpanded ? <IconLogout className="mr-3" /> : <><IconLogout className="mr-3"/> Logout</>}
             </Link>
         </div>
     </div>
