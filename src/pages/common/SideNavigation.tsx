@@ -8,11 +8,53 @@ import {
     IconUserFilled,
     IconChartHistogram,
     IconServicemark,
+    IconCapRounded,
     IconLogout,
     IconHomeFilled,
     IconUsers,
+    IconBaselineDensityMedium,
+    IconChartBar,
+    
 } from "@tabler/icons-react";
+import { Home, Settings, Tools, Asset } from "tabler-icons-react";
+// import * as Icons from "../../icons/dentalIcons.jsx";
 
+
+const pages = {
+    home: { icon: Home, label: "home", linkPath: "/" },
+    employees: {
+      icon: IconBaselineDensityMedium,
+      label: "Employees",
+      linkPath: "/employee",
+    },
+    assets: {
+      icon: Settings,
+      label: "assets",
+      linkPath: "/assets",
+    },
+    overview: { icon: IconChartBar, label: "overview", linkPath: "/overview" },
+  };
+  
+const doctorSidebarLinks = [
+    pages.home,
+    pages.employees,
+    pages.assets,
+    pages.overview,
+  ];
+  
+const secrterySidebarLinks = [
+    pages.home,
+    pages.employees,
+    pages.assets,
+    pages.overview,
+  ];
+  
+const adminSidebarLinks = [
+    pages.home, 
+    pages.employees, 
+    pages.overview
+];
+  
 function SideNav() {
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -37,40 +79,40 @@ function SideNav() {
         
         <div className="p-4 hover:bg-blue-100">
         <Link to="/user" className="flex ml-3">
-            {!isExpanded ? <IconHomeFilled className="fill-blue-500"/> : <><IconHomeFilled/>Home</>}
+            {!isExpanded ? <IconHomeFilled className="mr-3"/> : <><IconHomeFilled className="mr-3"/>Home</>}
             </Link>
         </div>
 
         <div className="p-4 hover:bg-blue-100 space-x-4 items-center justify-center">
             <Link to="/user/dashboard" className="flex ml-3 ">
-                {!isExpanded ? <IconChartHistogram className="fill-blue-500"/> :<><IconChartHistogram className="fill-blue-500"/>Dashboard</>}
+                {!isExpanded ? <IconChartHistogram className="mr-3"/> :<><IconChartHistogram className="mr-3"/>Dashboard</>}
             </Link>
         </div>
         <div className="p-4 hover:bg-blue-100">
             <Link to="/dental/employees" className="flex ml-3">
-                {!isExpanded ? <IconUserFilled className="fill-blue-500"/> : <><IconUserFilled className="fill-blue-500"/> Employees</>}
+                {!isExpanded ? <IconUserFilled className="mr-3"/> : <><IconUserFilled className="mr-3"/> Employees</>}
             </Link>
         </div>
 
         <div className="p-4 hover:bg-blue-100">
             <Link to="/dental/patients" className="flex ml-3">
-                {!isExpanded ? <IconManFilled className="fill-blue-500"/> : <><IconManFilled className="fill-blue-500"/> Patients</>}
+                {!isExpanded ? <IconManFilled className="mr-3"/> : <><IconManFilled className="mr-3"/> Patients</>}
             </Link>
         </div>
         <div className="p-4 hover:bg-blue-100">
             <Link to="/dental/products"  className="flex ml-3 ">
-                {!isExpanded ? <IconServicemark className="fill-blue-500"/> : <><IconServicemark className="fill-blue-500"/> Products</>}
+                {!isExpanded ? <Tools className="mr-3"/> : <><Tools className="mr-3"/> Products</>}
             </Link>
         </div>
         <div className="p-4 hover:bg-blue-100">
             <Link to="/dental/services"  className="flex ml-3"> 
-            {!isExpanded ? <IconServicemark className="fill-blue-500"/> : <><IconServicemark className="fill-blue-500"/> Services</>}
+            {!isExpanded ? <Settings className="mr-3"/> : <><Settings className="mr-3"/> Settings</>}
             </Link>
         </div>
     
         <div className="p-4 hover:bg-blue-100">
             <Link to="/" onClick={handleLogout} className="flex ml-3">
-                {!isExpanded ? <IconLogout className="fill-blue-500"/> : <><IconLogout className="fill-blue-500"/> Logout</>}
+                {!isExpanded ? <IconLogout className="mr-3"/> : <><IconLogout className="mr-3"/> Logout</>}
             </Link>
         </div>
     </div>

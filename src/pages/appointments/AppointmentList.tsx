@@ -11,6 +11,9 @@ export const AppointmentsList = () => {
 
     return (
         <div>
+            <div class="text-xl font-bold">
+                Appointments
+            </div>
             <Autocomplete
                 className="mt-3 pt-3 rounded-full..."
                 placeholder='Search Appointments...'

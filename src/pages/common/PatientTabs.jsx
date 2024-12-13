@@ -7,6 +7,8 @@ import {Autocomplete} from "@mantine/core";
 import PatientList from "../patient/PatientList.tsx";
 import { CreatePatientModal } from '../modals/CreatePatientModal.tsx';
 import {AppointmentsList} from "../appointments/AppointmentList.tsx";
+import MessageList from "../messages/MessageList.tsx";
+
 
 function PatientTab(){
 
@@ -47,6 +49,7 @@ function PatientTab(){
             {/* add elements inside tabs */}
             {toggleState === 1 ? <PatientList/> : <></>}
             {toggleState === 2 ? <AppointmentsList/> : <></>}
+            {toggleState === 3 ? <MessageList/> : <></>}
             
         </div>
     );
