@@ -1,6 +1,6 @@
 // App.js  
 import React from 'react';  
-import { Route, Routes } from 'react-router-dom';  
+import { Outlet, Route, Routes } from 'react-router-dom';  
 import { AuthProvider } from './pages/AuthContext.tsx';  
 import ProtectedRoute from './pages/ProtectedRoute.tsx';  
 import Home, {About, Services, Contact} from './pages/Home.tsx';  
@@ -53,7 +53,7 @@ const App = () => {
                     }  
                 />  
                 <Route  
-                    path="/user"  
+                    path="/user/*"  
                     element={  
                         <ProtectedRoute allowedRoles={['user']} children={undefined}>  
                             <UserDashboard />  
@@ -69,6 +69,8 @@ const App = () => {
                     }  
                 />  
             </Routes>  
+            <Outlet/>
+
         </AuthProvider>  
    
     );  

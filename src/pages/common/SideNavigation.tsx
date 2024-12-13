@@ -72,7 +72,7 @@ function SideNav() {
   return (
     <>
     <div className="flex items-center p-4" title="Menu">
-        <Link to="/user" onClick={toggleSidebar} className="text-xl font-bold ml-4">
+        <Link to="/user/patient" onClick={toggleSidebar} className="text-xl font-bold ml-4">
         <IconMenu2/>
         </Link>
     </div>
@@ -81,7 +81,7 @@ function SideNav() {
         {/* bg-blue-500 text-gray-800 h-screen w-64 fixed top-0 left-0 flex flex-col */}
         
         <div className="p-4 hover:bg-blue-100" title="Home">
-            <Link to="/user" className="flex ml-3">
+            <Link to="/user/patient" className="flex ml-3">
                 {!isExpanded ? <IconHomeFilled className="icon mr-3" /> : <><IconHomeFilled className="mr-3"/>Home</>}
             </Link>
             {/* <span className="tooltip">Home</span> */}
@@ -94,26 +94,26 @@ function SideNav() {
             {/* <span className="tooltip">Dashboard</span> */}
         </div>
         <div className="p-4 hover:bg-blue-100" title="Employees">
-            <Link to="/employees" className="flex ml-3">
+            <Link to="/user/employee" className="flex ml-3">
                 {!isExpanded ? <IconUserFilled className="icon mr-3"/> : <><IconUserFilled className="mr-3"/> Employees</>}
             </Link>
             {/* <span className="tooltip">Employees</span> */}
         </div>
 
         <div className="p-4 hover:bg-blue-100" title="Patients">
-            <Link to="/patients" className="flex ml-3">
+            <Link to="/user/patient" className="flex ml-3">
                 {!isExpanded ? <IconUsers className="icon mr-3"/> : <><IconUsers className="mr-3"/> Patients</>}
             </Link>
             {/* <span className="tooltip">Patients</span> */}
         </div>
         <div className="p-4 hover:bg-blue-100" title="Products">
-            <Link to="/products"  className="flex ml-3 ">
+            <Link to="/user/products"  className="flex ml-3 ">
                 {!isExpanded ? <products className="icon mr-3"/> : <><Tools className="mr-3"/> Products</>}
             </Link>
             {/* <span className="tooltip">Products</span> */}
         </div>
         <div className="p-4 hover:bg-blue-100" title="Settings">
-            <Link to="/services"  className="flex ml-3"> 
+            <Link to="/user/services"  className="flex ml-3"> 
             {!isExpanded ? <Settings className="mr-3"/> : <><Settings className="mr-3"/> Settings</>}
             </Link>
         </div>
@@ -123,6 +123,7 @@ function SideNav() {
                 {!isExpanded ? <IconLogout className="mr-3" /> : <><IconLogout className="mr-3"/> Logout</>}
             </Link>
         </div>
+        
     </div>
     </>
   );
