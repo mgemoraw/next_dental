@@ -1,16 +1,56 @@
-import { Autocomplete } from '@mantine/core';
+import { Autocomplete, Table } from '@mantine/core';
 import { IconEye, IconMan, IconTrash, IconEdit } from '@tabler/icons-react';
 import {Dental} from "tabler-icons-react";
-import React from 'react';
+import React, { useEffect } from 'react';
 import FetchPatients from "./FetchPatients.tsx";
 import { PatientStore } from '../../hookStores/PatientStore.tsx';
+import { patient } from '../../types/dentalType.tsx';
+import { patientApi, employeesGetAllApi} from '../../api/endPoints.jsx';
+import axios from 'axios';
+
+
+const getPatientsList = async  () => {
+
+    const api_url = process.env.REACT_APP_API_URL;
+    let user=localStorage.getItem('dentalPass');
+    let token = "";
+    if (user) {
+        token=JSON.parse(user).accessToken;
+    }
+
+    const URL = `${api_url}${employeesGetAllApi}`; 
+    try{
+        const response = await axios.get(URL, {
+            headers:{
+                'Authorization': `Bearer ${token}`  
+            }
+        });
+        if (response.data){
+            console.log("patients dta", response?.data.data);
+        }
+        return response?.data.data;
+
+    } catch(err) {
+        return null
+    }
+}
+
 
 const PatientList = (props) => {
     const fetchPatient = PatientStore((state: any) => state.fetchPatient);
     const patientData: patient[] = PatientStore((state: any) => state.data);
-    const patients = FetchPatients();
+
+    // const patientData = getPatientsList();
+
+
+    useEffect(() => {
+        fetchPatient();
+        console.log("data: ", patientData);
+      },[]);
+    
     const handleSearch = () => {
         console.log("Searching...");
+     
     }
 
     function handlePatientDelete(patient){
@@ -18,7 +58,6 @@ const PatientList = (props) => {
     }
     function handlePatientUpdate(patient){
         console.log(`Patient ${patient} data updated`);
-        console.log(fetchPatient);
 
     }
     function viewPatientDetail(patient){
@@ -29,60 +68,79 @@ const PatientList = (props) => {
         console.log("Doctor assigned to patient", patient);
 
     }
+    
+    var rows = patientData.map((element: patient, index) => (
+        <Table.Tr className="hover:bg-blue-500 " key={index}>
+            <Table.Td class="border">{index+ 1}</Table.Td>
+            <Table.Td className="border">{element.fname} {element.mname} {element.lname}</Table.Td>
+            <Table.Td className="border">{element.address}</Table.Td>
+            <Table.Td className="border">{element.id}</Table.Td>
+            <Table.Td className="flex">
+                <div className="ml-3 hover:text-blue-800 hover:font-bold "
+                    onClick={() => handlePatientUpdate(1)} >
+                    <IconEdit />
+                </div>
+                <div className="ml-3 hover:text-blue-800 hover:font-bold "
+                    onClick={()=> viewPatientDetail(1)} >
+                    <IconEye />
+                </div>
+                <div className="ml-3 hover:text-blue-800 hover:font-bold hover:-blue-500 " 
+                    onClick={() => handlePatientDelete(1)} >
+                    <IconTrash />
+                </div>
+                <div 
+                    className="ml-3 hover:text-blue-800 hover:font-bold " 
+                    onClick={() => handleAssignDoctor(1)}>
+                    <Dental />
+                </div>
+            
+            </Table.Td>
+        </Table.Tr>
+    ));
+
     return (
+        <>
+        { patientData.length > 0 && (
         <div>
-            <div class="text-xl font-bold">
+            
+            <div className="text-xl font-bold">
                 Patient List
             </div>
+            
             <Autocomplete
                 className="mt-3 pt-3 rounded-full..."
                 placeholder='Search Patient...'
                 onChange={handleSearch}
             />
+            
             <div>
-                <table className="table-auto border border-collapse">
-                <thead className="border border-collapse">
-                    <tr>
-                        <th className="border">No</th>
-                        <th className="border">PID</th>
-                        <th className="border">Name</th>
-                        <th className="border">Age</th>
-                        <th className="border">Actions</th>
+                <Table 
+                    striped
+                    highlightOnHover
+                    withTableBorder
+                    withColumnBorders
+                    mt={"sm"}
+                >
+                <Table.Thead className="border border-collapse">
+                    <Table.Tr>
+                        <Table.Th className="border">No</Table.Th>
+                        <Table.Th className="border">Full Name</Table.Th>
+                        <Table.Th className="border">Address</Table.Th>
+                        <Table.Th className="border">ID</Table.Th>
+                        <Table.Th className="border">Actions</Table.Th>
                         
-                    </tr>
-                </thead>
-                <tbody class="border">
-                    <tr className="hover:text-blue-800 ">
-                        <td class=" border border-slate-300">1</td>
-                        <td className="border">p300</td>
-                        <td className="border">John Carter Bill</td>
-                        <td className="border">33</td>
-                        <td className="flex m-3 border">
-                            <div className="ml-3 hover:bg-blue-100 "
-                                onClick={() => handlePatientUpdate(1)} >
-                                <IconEdit />
-                            </div>
-                            <div className="ml-3 hover:bg-blue-100 "
-                                onClick={()=> viewPatientDetail(1)} >
-                                <IconEye />
-                            </div>
-                            <div className="ml-3 hover:bg-blue-100 " 
-                                onClick={() => handlePatientDelete(1)} >
-                                <IconTrash className="text-red-800 font-bold" />
-                            </div>
-                            <div 
-                                className="ml-3 hover:bg-blue-100 " 
-                                onClick={() => handleAssignDoctor(1)}>
-                                <Dental />
-                            </div>
-                            
-                        </td>
-                    </tr>
-                    
-                </tbody>
-                </table>
+                    </Table.Tr>
+                </Table.Thead>
+                <Table.Tbody className="border">
+                    {rows}
+                </Table.Tbody>
+                </Table>
             </div>
         </div>
+        
+        )}
+    </>
+
     );
 }
 

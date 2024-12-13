@@ -15,7 +15,7 @@ import Layout from './pages/shared/Layout.tsx';
 
 const App = () => {  
     return (  
-        <AuthProvider>  
+        <AuthProvider children={undefined} >  
             <Routes>  
                 {/* <Route path="/admin"
                 element={
@@ -24,31 +24,36 @@ const App = () => {
 
                 
                 <Route path="/" element={
-                    <ProtectedRoute allowedRoles={["user"]}>
+                    <ProtectedRoute allowedRoles={["user"]} children={undefined}>
                         <Layout />
                     </ProtectedRoute>
                     } 
                 /> 
                 <Route path="/login" element={<Login />} />  
-                <Route path="/unauthorized" element={<Unauthorized />} />  
+                <Route path="/unauthorized" element={<Unauthorized />} /> 
                 <Route path="/signup" element={<Signup/>} />
                 <Route path="/about" element={<About/>} />
                 <Route path="/services" element={<Services/>} />
+                <Route path="/dashboard" element={<>Employees</>} />
+                <Route path="/products" element={<>Products</>} />
                 <Route path="/contact" element={<Contact/>} />
+                <Route path="/settings" element={<>Settings</>} />
+
                 <Route path="*" element = {<Error404/>}/>
+
                     
                 <Route  
                     path="/admin"  
                     element={  
-                        <ProtectedRoute allowedRoles={['admin']}>  
-                            <AdminDashboard />  
+                        <ProtectedRoute allowedRoles={['admin']} children={undefined}>  
+                            <AdminDashboard /> 
                         </ProtectedRoute>  
                     }  
                 />  
                 <Route  
                     path="/user"  
                     element={  
-                        <ProtectedRoute allowedRoles={['user']}>  
+                        <ProtectedRoute allowedRoles={['user']} children={undefined}>  
                             <UserDashboard />  
                         </ProtectedRoute>  
                     }  
@@ -56,7 +61,7 @@ const App = () => {
                 <Route  
                     path="/doctor"  
                     element={  
-                        <ProtectedRoute allowedRoles={['doctor']}>  
+                        <ProtectedRoute allowedRoles={['doctor']} children={undefined}>  
                             <UserDashboard />  
                         </ProtectedRoute>  
                     }  

@@ -1,18 +1,18 @@
 import axios from "axios";
 import { create } from "zustand";
-import { patientApi } from "../api/endPoints";
-import { patient } from "../types/dentalType";
+import { employeesGetAllApi } from "../api/endPoints";
+import { Employee } from "../types/dentalType";
 
 
-export const PatientStore = create((set) => ({
+export const EmployeeStore = create((set) => ({
   data: [],
   loading: false,
   hasErrors: false,
-  fetchPatient: async (data:patient) => {
+  fetchPatient: async (data:Employee) => {
     set({ loading: true });
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}${patientApi}`
+        `${process.env.REACT_APP_API_URL}${employeesGetAllApi}`
       );
       // const response =  fetch(`${process.env.REACT_APP_API_URL}${patientApi}`)
   
@@ -28,7 +28,7 @@ export const PatientStore = create((set) => ({
 }));
 
 
-export const PatientStoreList = create(() =>({
+export const EmployeeStoreList = create(() =>({
   data: [],
   loading: false,
   hasErrors: false,

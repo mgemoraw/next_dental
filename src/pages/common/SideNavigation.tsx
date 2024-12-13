@@ -84,28 +84,28 @@ function SideNav() {
         </div>
 
         <div className="p-4 hover:bg-blue-100 space-x-4 items-center justify-center">
-            <Link to="/user/dashboard" className="flex ml-3 ">
+            <Link to="/user" className="flex ml-3 ">
                 {!isExpanded ? <IconChartHistogram className="mr-3"/> :<><IconChartHistogram className="mr-3"/>Dashboard</>}
             </Link>
         </div>
         <div className="p-4 hover:bg-blue-100">
-            <Link to="/dental/employees" className="flex ml-3">
+            <Link to="/employees" className="flex ml-3">
                 {!isExpanded ? <IconUserFilled className="mr-3"/> : <><IconUserFilled className="mr-3"/> Employees</>}
             </Link>
         </div>
 
         <div className="p-4 hover:bg-blue-100">
-            <Link to="/dental/patients" className="flex ml-3">
+            <Link to="/patients" className="flex ml-3">
                 {!isExpanded ? <IconManFilled className="mr-3"/> : <><IconManFilled className="mr-3"/> Patients</>}
             </Link>
         </div>
         <div className="p-4 hover:bg-blue-100">
-            <Link to="/dental/products"  className="flex ml-3 ">
+            <Link to="/products"  className="flex ml-3 ">
                 {!isExpanded ? <Tools className="mr-3"/> : <><Tools className="mr-3"/> Products</>}
             </Link>
         </div>
         <div className="p-4 hover:bg-blue-100">
-            <Link to="/dental/services"  className="flex ml-3"> 
+            <Link to="/services"  className="flex ml-3"> 
             {!isExpanded ? <Settings className="mr-3"/> : <><Settings className="mr-3"/> Settings</>}
             </Link>
         </div>
