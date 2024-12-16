@@ -10,7 +10,7 @@ import {AppointmentsList} from "../appointments/AppointmentList.tsx";
 import MessageList from "../messages/MessageList.tsx";
 
 
-function PatientTab(){
+function ServicesTab(){
 
     const [toggleState, setToggleState]  = useState(1);
 
@@ -28,21 +28,21 @@ function PatientTab(){
                     onClick={()=> toggleTab(1)}
                 >
                     <IconManFilled className="mr-2"/>
-                    Patients
+                    Service Type
                 </div>
 
                 <div className={toggleState === 2 ?  "flex text-blue-500 rounded-xl p-4 m-4 font-bold active bg-gray-200 hover:text-blue-800 " : "hover:text-blue-800 hover:font-bold text-gray-800 p-4 m-4 flex"}
                     onClick={()=> toggleTab(2)}
                 >
                     <IconAlarmFilled className="mr-2"/>
-                    Appointments
+                    Services
                 </div>
 
                 <div className={toggleState === 3 ?  "flex text-blue-500 rounded-xl p-4 m-4 font-bold active bg-gray-200 hover:text-blue-800 " : "hover:text-blue-800 hover:font-bold text-gray-800 p-4 m-4 flex"}
                     onClick={()=> toggleTab(3)}
                 >
                     <IconBellFilled className="mr-2"/>
-                    Notifications
+                    Products
                 </div>
             </div>
             
@@ -55,4 +55,4 @@ function PatientTab(){
     );
 }
 
-export default PatientTab
+export default ServicesTab

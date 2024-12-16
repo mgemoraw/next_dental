@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link, Routes, Route, Outlet} from 'react-router-dom';
 
 import DentalHeader from "../common/DentalHeader.tsx";
@@ -11,9 +11,12 @@ import { CreatePatientModal } from '../modals/CreatePatientModal.tsx';
 
 import EmployeeList from "../employee/EmployeeList.tsx";
 import PatientList from "../patient/PatientList.tsx";
+import ServicesTab from '../common/ServicesTab.jsx';
+import Navbar from '../Navbar.tsx';
+import { NavProvider } from '../shared/NavContext.jsx';
 
 
-const PatientPage = () => {
+export const PatientPage = () => {
     return (
         <div className="flex-1 p-4">
             <h1 className="font-bold pl-4 text-2xl">Tana Dental Clinic Management System</h1>
@@ -27,7 +30,7 @@ const PatientPage = () => {
     );
 }
 
-const EmployeePage = () => {
+export const EmployeePage = () => {
     return (
         <div className="flex-1 p-4">
             <h1 className="font-bold pl-4 text-2xl">Tana Dental Clinic Management System</h1>
@@ -41,27 +44,66 @@ const EmployeePage = () => {
     );
 }
 
-const UserDashboard = () => {
 
-    const handleSearch = () => {
-        console.log("Searching...");
-    };
-    
-
+export const ServicesPage = () => {
     return (
+        <div className="flex-1 p-4">
+            <h1 className="font-bold pl-4 text-2xl">Tana Dental Clinic Management System</h1>
+
+            <div className="flex flex-row-reverse space-x-4 space-x-reverse ...">
+                <CreatePatientModal/>
+            </div>
+            
+            <ServicesTab/>
+        </div>
+    );
+}
+
+export const Dashboard = () => {
+    
+    return (
+        
+        <div className="flex-1 p-4">
+            <h1 className="font-bold pl-4 text-2xl">Tana Dental Clinic Management System</h1>
+            
+        </div>
+    );
+
+}
+
+export const UserDashboard = () => {
+
+
+    useEffect(() => {
+        //
+    }, [])
+    return (
+        <>
+        <NavProvider >
+            <Navbar/>
+            
+            
         <div className="flex h-screen">
             <div>
+
                 <SideNav/>
 
             </div>
-            
+            <div>
             <Outlet/> {/* this will render child routes */}
 
+            </div>
+
             <Routes>
+                <Route path="/" element={<Dashboard/>}/>
                 <Route path="employee" element={<EmployeePage/>}/>
-                <Route path="patient" element={<PatientPage/>}/>
+                <Route path="home" element={<PatientPage/>}/>
+                <Route path="services" element={<ServicesPage/>}/>
             </Routes>
         </div>
+        </NavProvider>
+
+        </>
     );
 
 }
