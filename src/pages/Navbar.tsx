@@ -6,15 +6,10 @@ import { Settings } from 'tabler-icons-react';
 import {useNavContext} from "./shared/NavContext.jsx"
 
 
-const Navbar = () => {
+const Navbar = ({onToggleSidebar}) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isDark, setThemeDark] = useState(false);
-  const {toggleNav} = useNavContext();
   
-  const toggleSidebar = () => {
-    setIsExpanded(!isExpanded);
-  }
-
   const handleLogout = () => {
     logOut();
   }
@@ -24,18 +19,19 @@ const Navbar = () => {
   }
   
   return (
-    <nav className="bg-gray-50 p-4">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="bg-gray-50 p-4 border flex">
+      <Link  onClick={onToggleSidebar} className="mr-3 ">{isAuthenticated() ? <IconMenu2/>: <></>}</Link>
+      <div className="container mx-auto flex justify-between items-center ">
         <div className="flex text-gray-800 text-xl font-bold">
-          <Link  onClick={undefined} className="mr-3 ml-3"><IconMenu2/></Link>
+          
           <Link to="/user/home">Tana Dental Clinic</Link>
         </div>
         <div className="flex space-x-4">  
-          <Link to="/" className="text-gray-800 hover:text-white">Home</Link>  
-          <Link to="/about" className="text-gray-800 hover:text-white">About</Link>  
-          <Link to="/services" className="text-gray-800 hover:text-white">Services</Link>  
-          <Link to="/contact" className="text-gray-800 hover:text-white">Contact</Link> 
-          <Link to="/contact" className="text-gray-800 hover:text-white">
+          <Link to="/" className="text-gray-800 p-3 hover:bg-gray-200 hover:text-blue-800">Home</Link>  
+          <Link to="/about" className="text-gray-800 p-3 hover:bg-gray-200 hover:text-blue-800">About</Link>  
+          <Link to="/services" className="text-gray-800 p-3 hover:bg-gray-200 hover:text-blue-800">Services</Link>  
+          <Link to="/contact" className="text-gray-800 p-3 hover:bg-gray-200 hover:text-blue-800">Contact</Link> 
+          <Link to="/contact" className="text-gray-800 p-3 hover:bg-gray-200 hover:text-blue-800">
             {isDark ? <IconMoon/> : <IconSun/>}
             </Link> 
           
@@ -43,8 +39,8 @@ const Navbar = () => {
           (<Link to="/login" className="text-gray-800 hover:text-white">Login</Link> )
           : (
               <div className="flex justify-between"> 
-                <Link to="/user/profile" onClick={undefined} ><IconUser/></Link>
-                <Link to="/" onClick={handleLogout} className="text-gray-800 hover:text-white"><IconLogout/></Link> 
+                <Link to="/user/profile" onClick={undefined} className="p-3 hover:bg-gray-200 "><IconUser/></Link>
+                <Link to="/" onClick={handleLogout} className="p-3 hover:bg-gray-200 hover:text-blue-800 "><IconLogout/></Link> 
               </div>
             )
           }

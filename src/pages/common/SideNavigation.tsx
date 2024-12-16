@@ -56,8 +56,8 @@ const adminSidebarLinks = [
     pages.overview
 ];
 
-function SideNav() {
-    const [isExpanded, setIsExpanded] = useState(false);
+function SideNav({isExpanded}) {
+    // const [isExpanded, setIsExpanded] = useState(false);
     // const [isTooltipVissible, setTooltipVissible] = useState(false);
     // const {isNavOpen} = useNavContext();
 
@@ -65,9 +65,9 @@ function SideNav() {
         logOut();
       }
 
-    const toggleSidebar = () => {
-        setIsExpanded(!isExpanded);
-    };
+    // const toggleSidebar = () => {
+    //     setIsExpanded(isNavOpen);
+    // };
   return (
     <>
     <div>

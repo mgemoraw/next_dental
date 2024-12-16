@@ -1,5 +1,5 @@
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link, Routes, Route, Outlet} from 'react-router-dom';
 
 import DentalHeader from "../common/DentalHeader.tsx";
@@ -72,24 +72,33 @@ export const Dashboard = () => {
 }
 
 export const UserDashboard = () => {
+    const [isOpen, setNavOpen] = useState(false);
+
+    const toggleSidebar = () => {
+        setNavOpen(!isOpen);
+    }
 
 
     useEffect(() => {
         //
     }, [])
+
     return (
         <>
-        <NavProvider >
-            <Navbar/>
+        <div>
+        <Navbar onToggleSidebar={toggleSidebar}/>
+
+        </div>
             
             
         <div className="flex h-screen">
             <div>
 
-                <SideNav/>
+                <SideNav isExpanded={isOpen}/>
 
             </div>
             <div>
+
             <Outlet/> {/* this will render child routes */}
 
             </div>
@@ -101,7 +110,6 @@ export const UserDashboard = () => {
                 <Route path="services" element={<ServicesPage/>}/>
             </Routes>
         </div>
-        </NavProvider>
 
         </>
     );
@@ -109,3 +117,4 @@ export const UserDashboard = () => {
 }
 
 export default UserDashboard
+
