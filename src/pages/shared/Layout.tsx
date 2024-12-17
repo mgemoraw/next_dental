@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Outlet } from 'react-router-dom';
 import { SideNav } from '../common/SideNavigation.tsx';
-import Navbar from '../Navbar.tsx';
+import Navbar from '../common/Navbar.tsx';
 
 
 

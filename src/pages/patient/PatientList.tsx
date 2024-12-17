@@ -40,12 +40,11 @@ const PatientList = (props) => {
     const fetchPatient = PatientStore((state: any) => state.fetchPatient);
     const patientData: patient[] = PatientStore((state: any) => state.data);
 
-    // const patientData = getPatientsList();
 
 
     useEffect(() => {
         fetchPatient();
-        console.log("data: ", patientData);
+        
       },[]);
     
     const handleSearch = () => {
@@ -71,7 +70,7 @@ const PatientList = (props) => {
     
     var rows = patientData.map((element: patient, index) => (
         <Table.Tr className="hover:bg-blue-500 " key={index}>
-            <Table.Td class="border">{index+ 1}</Table.Td>
+            <Table.Td className="border">{index+ 1}</Table.Td>
             <Table.Td className="border">{element.fname} {element.mname} {element.lname}</Table.Td>
             <Table.Td className="border">{element.address}</Table.Td>
             <Table.Td className="border">{element.id}</Table.Td>

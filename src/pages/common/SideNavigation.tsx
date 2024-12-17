@@ -16,7 +16,7 @@ import {
     
 } from "@tabler/icons-react";
 import { Home, Settings, Tools, LayoutDashboard as IconDashboard } from "tabler-icons-react";
-import Navbar from '../Navbar.tsx';
+import Navbar from './Navbar.tsx';
 // import doctor2 from "../../icons/doctor2.PNG";
 // import products from "../../assets/icons/products.png";
 

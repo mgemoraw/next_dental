@@ -30,8 +30,9 @@ const patientUpdateApi = "patients/update";
 const patientDeleteApi  = "patients/delete"
 
 const StoreApi = "store-item";
-const appointmentAPi = "appointment";
+const appointmentApi = "appointment";
 const doctorAssign = "assign/patient-to-doctor";
+const getAllPaymentsApi = "payments";
 
 
 export {
@@ -44,7 +45,7 @@ export {
   patientByIdApi,
   StoreApi,
   doctorAssign,
-  appointmentAPi,
+  appointmentApi,
   serviceCreateApi,
   serviceUpdateApi,
   serviceDeleteApi,
@@ -61,5 +62,6 @@ export {
   createPatientApi,
   employeesGetAllApi,
   patientUpdateApi,
-  patientDeleteApi
+  patientDeleteApi,
+  getAllPaymentsApi
 };

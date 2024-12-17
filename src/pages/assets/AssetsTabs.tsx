@@ -10,7 +10,7 @@ import ProductsList from "../assets/Products.tsx";
 import ServiceTypesList from "../assets/ServiceTypes.tsx";
 import ServicesList from "../assets/Services.tsx";
 
-function ServicesTab(){
+function AssetsTabs() {
 
     const [toggleState, setToggleState]  = useState(1);
 
@@ -28,14 +28,14 @@ function ServicesTab(){
                     onClick={()=> toggleTab(1)}
                 >
                     <IconManFilled className="mr-2"/>
-                    Service Type
+                    Services
                 </div>
 
                 <div className={toggleState === 2 ?  "flex text-blue-500 rounded-xl p-4 m-4 font-bold active bg-gray-200 hover:text-blue-800 " : "hover:text-blue-800 hover:font-bold text-gray-800 p-4 m-4 flex"}
                     onClick={()=> toggleTab(2)}
                 >
                     <IconAlarmFilled className="mr-2"/>
-                    Services
+                    Service Types
                 </div>
 
                 <div className={toggleState === 3 ?  "flex text-blue-500 rounded-xl p-4 m-4 font-bold active bg-gray-200 hover:text-blue-800 " : "hover:text-blue-800 hover:font-bold text-gray-800 p-4 m-4 flex"}
@@ -47,12 +47,13 @@ function ServicesTab(){
             </div>
             
             {/* add elements inside tabs */}
-            {toggleState === 1 ? <ServiceTypesList/> : <></>}
-            {toggleState === 2 ? <ServicesList/> : <></>}
+            {toggleState === 1 ? <ServicesList/> : <></>}
+            {toggleState === 2 ? <ServiceTypesList/> : <></>}
             {toggleState === 3 ? <ProductsList/> : <></>}
             
         </div>
     );
 }
 
-export default ServicesTab
+
+export default AssetsTabs

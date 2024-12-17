@@ -1,13 +1,13 @@
 // App.js  
 import React from 'react';  
 import { Outlet, Route, Routes } from 'react-router-dom';  
-import { AuthProvider } from './pages/AuthContext.tsx';  
-import ProtectedRoute from './pages/ProtectedRoute.tsx';  
-import Home, {About, Services, Contact} from './pages/Home.tsx';  
+import { AuthProvider } from './pages/common/AuthContext.tsx';  
+import ProtectedRoute from './pages/common/ProtectedRoute.tsx';  
+import Home, {About, Services, Contact} from './pages/common/Home.tsx';  
 import AdminDashboard from './pages/dashboard/AdminDashboard.tsx';  
 import UserDashboard from './pages/dashboard/UserDashboard.tsx';  
-import Login from './pages/Login.tsx';  
-import Signup from './pages/Signup.tsx';  
+import Login from './pages/common/Login.tsx';  
+import Signup from './pages/common/Signup.tsx';  
 import {Unauthorized, Error404} from './pages/unauthorized/Unauthorized.tsx';  
 import {isAuthenticated} from "./auth/user.tsx";
 import Layout from './pages/shared/Layout.tsx';

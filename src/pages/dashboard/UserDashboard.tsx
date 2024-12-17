@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link, Routes, Route, Outlet} from 'react-router-dom';
 
-import DentalHeader from "../common/DentalHeader.tsx";
+
 import PatientTab from '../common/PatientTabs.jsx';
 import { TabVertical, SideNav} from '../common/SideNavigation.tsx';
 import SideBar from "../common/SideBar.jsx";
@@ -12,20 +12,21 @@ import { CreatePatientModal } from '../modals/CreatePatientModal.tsx';
 import EmployeeList from "../employee/EmployeeList.tsx";
 import PatientList from "../patient/PatientList.tsx";
 import ServicesTab from '../common/ServicesTab.jsx';
-import Navbar from '../Navbar.tsx';
+import Navbar from '../common/Navbar.tsx';
 import { NavProvider } from '../shared/NavContext.jsx';
-
+import AssetsTabs from "../assets/AssetsTabs.tsx";
+import AssetsCreateModal from "../modals/CreateAssetsModal.tsx";
 
 export const PatientPage = () => {
     return (
-        <div className="flex-1 p-4">
-            <h1 className="font-bold pl-4 text-2xl">Tana Dental Clinic Management System</h1>
+        <div className="flex-1 pl-4 pr-4">
+            <div className="flex flex-row-reverse space-x-4 space-x-reverse ">
 
-            <div className="flex flex-row-reverse space-x-4 space-x-reverse ...">
                 <CreatePatientModal/>
             </div>
             
             <PatientTab/>
+
         </div>
     );
 }
@@ -35,7 +36,7 @@ export const EmployeePage = () => {
         <div className="flex-1 p-4">
             <h1 className="font-bold pl-4 text-2xl">Tana Dental Clinic Management System</h1>
 
-            <div className="flex flex-row-reverse space-x-4 space-x-reverse ...">
+            <div className="flex flex-row-reverse space-x-4 space-x-reverse">
                 <CreatePatientModal/>
             </div>
             
@@ -45,16 +46,16 @@ export const EmployeePage = () => {
 }
 
 
-export const ServicesPage = () => {
+export const AssetsPage = () => {
     return (
         <div className="flex-1 p-4">
-            <h1 className="font-bold pl-4 text-2xl">Tana Dental Clinic Management System</h1>
+            
 
             <div className="flex flex-row-reverse space-x-4 space-x-reverse ...">
-                <CreatePatientModal/>
+                <AssetsCreateModal/>
             </div>
             
-            <ServicesTab/>
+            <AssetsTabs/>
         </div>
     );
 }
@@ -107,7 +108,7 @@ export const UserDashboard = () => {
                 <Route path="/" element={<Dashboard/>}/>
                 <Route path="employee" element={<EmployeePage/>}/>
                 <Route path="home" element={<PatientPage/>}/>
-                <Route path="services" element={<ServicesPage/>}/>
+                <Route path="services" element={<AssetsPage/>}/>
             </Routes>
         </div>
 

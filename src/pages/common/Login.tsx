@@ -7,7 +7,7 @@ import axios from 'axios';
 import { IconCheck, IconX } from '@tabler/icons-react';
 import { notifications } from '@mantine/notifications';
 import Navbar from "./Navbar.tsx";
-import { loginApi } from "../api/endPoints";
+import { loginApi } from "../../api/endPoints.jsx";
 import {useAuth} from "./AuthContext.tsx";
 
 const Login = () => {  
@@ -171,9 +171,9 @@ const Login = () => {
             {loading ? "Logging in..." : "Log In" }
           </button>  
         </form>  
-        <p className="mt-4 text-sm text-center text-gray-600">  
+        {/* <p className="mt-4 text-sm text-center text-gray-600">  
           Don't have an account?  <Link to="/signup" className="text-blue-500 hover:underline">Sign up</Link>  
-        </p>  
+        </p>   */}
       </div>  
     </div>
     </> 

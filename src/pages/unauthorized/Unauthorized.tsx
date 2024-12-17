@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import Navbar from "../Navbar.tsx";
+import Navbar from "../common/Navbar.tsx";
 import { Link } from 'react-router-dom';
 
 const Unauthorized =()=>{
