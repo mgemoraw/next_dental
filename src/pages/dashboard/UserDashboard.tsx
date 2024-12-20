@@ -16,6 +16,9 @@ import Navbar from '../common/Navbar.tsx';
 import { NavProvider } from '../shared/NavContext.jsx';
 import AssetsTabs from "../assets/AssetsTabs.tsx";
 import AssetsCreateModal from "../modals/CreateAssetsModal.tsx";
+import SecretaryHomePage from '../secretary/SecretaryHome.tsx';
+import { ApexChart } from '../secretary/Charts.tsx';
+import AdminDashboard from './AdminDashboard.tsx';
 
 export const PatientPage = () => {
     return (
@@ -65,8 +68,11 @@ export const Dashboard = () => {
     return (
         
         <div className="flex-1 p-4">
-            <h1 className="font-bold pl-4 text-2xl">Tana Dental Clinic Management System</h1>
-            
+            {/* <SecretaryHomePage/> */}
+            {/* <SecretaryHomePageCharts/> */}
+            <ApexChart/>
+            <ApexChart/> 
+            <ApexChart/>
         </div>
     );
 
@@ -105,10 +111,12 @@ export const UserDashboard = () => {
             </div>
 
             <Routes>
-                <Route path="/" element={<Dashboard/>}/>
-                <Route path="employee" element={<EmployeePage/>}/>
+                
+                <Route path="employees" element={<EmployeePage/>}/>
                 <Route path="home" element={<PatientPage/>}/>
                 <Route path="services" element={<AssetsPage/>}/>
+                <Route path="dashboard" element={<AdminDashboard/>}/>
+                <Route path="overview" element={<Dashboard/>}/>
             </Routes>
         </div>
 

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { isAuthenticated, logOut } from '../../auth/user.tsx';
 import {Button} from "@mantine/core";
@@ -13,9 +13,18 @@ import {
     IconUsers,
     IconBaselineDensityMedium,
     IconChartBar,
+    IconLayout2,
+    IconSettings2,
+    IconSettings,
+    IconUserCircle,
+    IconHealthRecognition,
+    IconMapHeart,
+    IconDental,
+    IconDentalBroken,
     
 } from "@tabler/icons-react";
 import { Home, Settings, Tools, LayoutDashboard as IconDashboard } from "tabler-icons-react";
+import {FaUser} from 'react-icons/fa';
 import Navbar from './Navbar.tsx';
 // import doctor2 from "../../icons/doctor2.PNG";
 // import products from "../../assets/icons/products.png";
@@ -57,17 +66,32 @@ const adminSidebarLinks = [
 ];
 
 function SideNav({isExpanded}) {
-    // const [isExpanded, setIsExpanded] = useState(false);
-    // const [isTooltipVissible, setTooltipVissible] = useState(false);
-    // const {isNavOpen} = useNavContext();
+    const [user, setUser] = useState("");
+
+    
+
+    function getCurrentUser(){
+        let currentUser = null;
+        const storedUser = localStorage.getItem("user");
+        console.log(storedUser);
+        if (storedUser) {
+            currentUser = JSON.parse(storedUser);
+        }
+
+        console.log(currentUser);
+        return currentUser;
+    }
+    
 
     const handleLogout = () => {
         logOut();
       }
 
-    // const toggleSidebar = () => {
-    //     setIsExpanded(isNavOpen);
-    // };
+    useEffect(()=>{
+        setUser(getCurrentUser());
+    }, [])
+
+
   return (
     <>
     <div>
@@ -85,44 +109,65 @@ function SideNav({isExpanded}) {
     <div className={`bg-gray-100 text-gray-800 h-screen ${isExpanded ? 'w-64' : 'w-20 sm:block'} sm:block md:block lg:block xl:block `}>
         {/* bg-blue-500 text-gray-800 h-screen w-64 fixed top-0 left-0 flex flex-col */}
         
-        <div className="p-4 hover:bg-blue-100" title="Home">
-            <Link to="/user/home" className="flex ml-3">
+      
+        <div className="p-4 hover:bg-blue-100" title="Home Page">
+            <Link to="/home" className="flex ml-3">
                 {!isExpanded ? <IconHomeFilled className="icon mr-3" /> : <><IconHomeFilled className="mr-3"/>Home</>}
             </Link>
             {/* <span className="tooltip">Home</span> */}
         </div>
-        <div className="p-4 hover:bg-blue-100" title="Employees">
-            <Link to="/user/employee" className="flex ml-3">
-                {!isExpanded ? <IconUserFilled className="icon mr-3"/> : <><IconUserFilled className="mr-3"/> Employees</>}
-            </Link>
-            
-        </div>
 
-        <div className="p-4 hover:bg-blue-100 space-x-4 items-center justify-center" title="Dashboard">
-            <Link to="/user" className="flex ml-3 ">
-                {!isExpanded ? <IconDashboard className="icon mr-3"/> :<><IconDashboard className="mr-3"/>Dashboard</>}
-            </Link>
-            
-        </div>
+        {user.role=="admin" && (
+        <div> 
+            <div className="p-4 hover:bg-blue-100 space-x-4 items-center justify-center" title="Dashboard">
+                <Link to="/dashboard" className="flex ml-3 ">
+                    {!isExpanded ? <IconDashboard className="icon mr-3"/> :<><IconDashboard className="mr-3"/>Dashboard</>}
+                </Link>
         
+            </div>
+            <div className="p-4 hover:bg-blue-100" title="Employees">
+                <Link to="/employees" className="flex ml-3">
+                    {!isExpanded ? <IconUserFilled className="icon mr-3"/> : <><IconUserFilled className="mr-3"/> Employees</>}
+                </Link>
+                
+            </div>
+            
+        </div>
+        )}
+        
+        {user.role==='user' && (
+        <div>
+            <div className="p-4 hover:bg-blue-100 space-x-4 items-center justify-center" title="Dashboard">
+                <Link to="/dashboard" className="flex ml-3 ">
+                    {!isExpanded ? <IconDashboard className="icon mr-3"/> :<><IconDashboard className="mr-3"/>Dashboard</>}
+                </Link>
+        
+            </div>
+        
+            <div className="p-4 hover:bg-blue-100" title="Employees">
+                <Link to="/employees" className="flex ml-3">
+                    {!isExpanded ? <IconUserCircle className="icon mr-3"/> : <><IconUserCircle className="mr-3"/> Employees</>}
+                </Link>
+                
+            </div>
+            
+        </div>
+        )}
 
-        <div className="p-4 hover:bg-blue-100" title="Products">
-            <Link to="/user/services"  className="flex ml-3 ">
-                {!isExpanded ? <Tools className="icon mr-3"/> : <><Tools className="mr-3"/> Assets</>}
+        
+        <div className="p-4 hover:bg-blue-100" title="Assets">
+            <Link to="/services"  className="flex ml-3 ">
+                {!isExpanded ? <IconSettings className="icon mr-3"/> : <><IconSettings className="mr-3"/> Assets</>}
             </Link>
            
         </div>
         <div className="p-4 hover:bg-blue-100" title="Settings">
-            <Link to="/user/settings"  className="flex ml-3"> 
-            {!isExpanded ? <Settings className="mr-3"/> : <><Settings className="mr-3"/> Settings</>}
+            <Link to="/overview" onClick={getCurrentUser}  className="flex ml-3"> 
+            {!isExpanded ? <IconChartBar className="mr-3"/> : <><IconChartBar className="mr-3"/> Overview</>}
             </Link>
         </div>
     
-        {/* <div className="p-4 hover:bg-blue-100" title="Logout">
-            <Link to="/" onClick={handleLogout} className="flex ml-3">
-                {!isExpanded ? <IconLogout className="mr-3" /> : <><IconLogout className="mr-3"/> Logout</>}
-            </Link>
-        </div> */}
+        
         
     </div>
     </div>

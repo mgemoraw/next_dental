@@ -26,7 +26,7 @@ const Navbar = ({onToggleSidebar}) => {
       <div className="container mx-auto flex justify-between items-center ">
         <div className="flex text-gray-800 text-xl font-bold">
           
-          <Link to="/user/home">Tana Dental Clinic</Link>
+          <Link to="/home">Tana Dental Clinic Management System</Link>
         </div>
         {isAuthenticated() ? (
           <div className="flex justify-between"> 

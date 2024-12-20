@@ -5,7 +5,7 @@ import { AuthProvider } from './pages/common/AuthContext.tsx';
 import ProtectedRoute from './pages/common/ProtectedRoute.tsx';  
 import Home, {About, Services, Contact} from './pages/common/Home.tsx';  
 import AdminDashboard from './pages/dashboard/AdminDashboard.tsx';  
-import UserDashboard from './pages/dashboard/UserDashboard.tsx';  
+import UserDashboard, { Dashboard } from './pages/dashboard/UserDashboard.tsx';  
 import Login from './pages/common/Login.tsx';  
 import Signup from './pages/common/Signup.tsx';  
 import {Unauthorized, Error404} from './pages/unauthorized/Unauthorized.tsx';  
@@ -25,9 +25,10 @@ const App = () => {
                 */}
 
                 
-                <Route path="/" element={
+                <Route path="/*" element={
                     <ProtectedRoute allowedRoles={["user"]} children={undefined}>
-                        <Layout />
+                        {/* <Layout/> */}
+                        <UserDashboard />
                     </ProtectedRoute>
                     } 
                 /> 
@@ -35,39 +36,41 @@ const App = () => {
                 <Route path="/unauthorized" element={<Unauthorized />} /> 
                 <Route path="/signup" element={<Signup/>} />
                 <Route path="/about" element={<About/>} />
-                <Route path="/services" element={<Services/>} />
-                <Route path="/dashboard" element={<>Employees</>} />
-                <Route path="/products" element={<>Products</>} />
                 <Route path="/contact" element={<Contact/>} />
-                <Route path="/settings" element={<>Settings</>} />
+
+                {/* <Route path="/services" element={<Services/>} /> */}
+                {/* <Route path="/dashboard" element={<>Dashboard</>} /> */}
+                {/* <Route path="/products" element={<>Products</>} /> */}
+                {/* <Route path="/settings" element={<>Settings</>} /> */}
+                {/* <Route path="/overview" element={<Dashboard/>} /> */}
 
                 <Route path="*" element = {<Error404/>}/>
 
                     
-                <Route  
+                {/* <Route  
                     path="/admin"  
                     element={  
                         <ProtectedRoute allowedRoles={['admin']} children={undefined}>  
                             <AdminDashboard /> 
                         </ProtectedRoute>  
                     }  
-                />  
+                />   */}
                 <Route  
-                    path="/user/*"  
+                    path="/*"  
                     element={  
                         <ProtectedRoute allowedRoles={['user']} children={undefined}>  
                             <UserDashboard />  
                         </ProtectedRoute>  
                     }  
                 /> 
-                <Route  
-                    path="/doctor"  
+                {/* <Route  
+                    path="/*"  
                     element={  
                         <ProtectedRoute allowedRoles={['doctor']} children={undefined}>  
                             <UserDashboard />  
                         </ProtectedRoute>  
                     }  
-                />  
+                />   */}
             </Routes>  
             <Outlet/>
 
