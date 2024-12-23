@@ -1,4 +1,5 @@
 const loginApi = "employees/login";
+const logoutApi = "employees/logout";
 const createUserApi = "users/create-user";
 const serviceTypeCreateApi = "service-types/create";
 const serviceTypeGetAllApi = "service-types/index";
@@ -9,7 +10,7 @@ const serviceGetAllApi = "services/index";
 const serviceGetByIDApi = "services/";
 const serviceCreateApi = "services/create";
 const serviceUpdateApi = "services/update/";
-const serviceDeleteApi = "services/delte/";
+const serviceDeleteApi = "services/delete/";
 const productCreateApi = "products/create";
 const productUpdateApi = "products/update/";
 const productDeleteApi = "products/delete/";
@@ -37,6 +38,7 @@ const getAllPaymentsApi = "payments";
 
 export {
   loginApi,
+  logoutApi,
   createUserApi,
   serviceTypeCreateApi,
   serviceTypeGetAllApi,

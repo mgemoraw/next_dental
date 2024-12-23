@@ -12,12 +12,17 @@ export const PatientStore = create((set) => ({
     set({ loading: true });
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}${patientApi}`
+        `${process.env.REACT_APP_API_URL_LOCAL}${patientApi}`, {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          withCredentials: true, // Include cookies in requests
+        }
       );
       // const response =  fetch(`${process.env.REACT_APP_API_URL}${patientApi}`)
   
       set({
-        data: response?.data.data || [],
+        data: response?.data || [],
         loading: false,
       });
       

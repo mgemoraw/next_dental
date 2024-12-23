@@ -46,21 +46,31 @@ const Login = () => {
     // handle login logic here
     setLoading(true); // Set loading state  
     setError(''); // Reset error state 
-    const apiURL = process.env.REACT_APP_API_URL;
+    const apiURL = process.env.REACT_APP_API_URL_LOCAL;
     console.log(apiURL);
     const api_url = `${apiURL}${loginApi}`;
+    // const api_url = `${apiURL}users/login`;
 
     try {  
       const response = await axios.post(api_url, {  
           username,  
           password,   
-      }); 
-      if (response.data.data.accesstoken) {  
+      },
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        withCredentials: true, // Include cookies in requests
+      }
+    ); 
+      console.log("login response", response);
+
+      if (response.data.access_token) {  
         // save user and password in the cache (local storage)
         var userData = {
-          accessToken: response.data.data.accesstoken,
-          username: response.data.data.username,
-          role: "user", // response.data.data.role,
+          accessToken: response.data.accesstoken,
+          username: response.data.username,
+          role: response.data.role // "user", // response.data.data.role,
         };
         localStorage.setItem("dentalPass", JSON.stringify(userData))
         localStorage.setItem("user", JSON.stringify(userData));

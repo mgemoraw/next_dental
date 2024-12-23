@@ -10,8 +10,9 @@ import ReactApexChart from 'react-apexcharts';
 import { BarChart } from '@mantine/charts';
 import { rgba } from '@mantine/core';
 import { AppointmentCard, CreditCard, DebitCard, MessageCard, PatientCard, UpcomingEvents } from './SecretaryCards.tsx';
-import {CalendarCard, CalendarWidget} from "./EventCalendar.tsx";
+import {CalendarCard, CalendarWidget, CustomCalendarCard, CustomCalendarWidget} from "./EventCalendar.tsx";
 import UpcomingMeetings from './UpcomingEvents.tsx';
+import {CustomCalendarModal} from "./CalendarModal.tsx";
 
 
 
@@ -58,11 +59,12 @@ function SecretaryHomePage(){
         </div>
 
         <div className="grid grid-cols-1 gap-1">
-            <h1 className="text-gray-900 text-xl font-bold">
-              Today: <span className="text-blue-800"> {new Date().toDateString()}</span>
-            </h1>
-            <CalendarWidget/>
+            <div >
+              <h1 className="text-gray-900 text-xl font-bold">Today: <span className="text-blue-800"> {new Date().toDateString()}</span></h1>
+              <CustomCalendarWidget/>
 
+            </div>
+            
           </div>
        
       </div>

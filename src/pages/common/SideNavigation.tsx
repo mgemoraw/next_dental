@@ -26,8 +26,7 @@ import {
 import { Home, Settings, Tools, LayoutDashboard as IconDashboard } from "tabler-icons-react";
 import {FaUser} from 'react-icons/fa';
 import Navbar from './Navbar.tsx';
-// import doctor2 from "../../icons/doctor2.PNG";
-// import products from "../../assets/icons/products.png";
+import {logout} from "./Logout.tsx";
 
 
 const pages = {
@@ -84,7 +83,9 @@ function SideNav({isExpanded}) {
     
 
     const handleLogout = () => {
+        logout();
         logOut();
+
       }
 
     useEffect(()=>{
