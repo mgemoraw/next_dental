@@ -78,7 +78,8 @@ const Login = () => {
 
         // Redirect to a protected route or update state accordingly  
         login(userData);
-        navigate(`/${userData.role}`);
+        // navigate(`/${userData.role}`);
+        navigate("/home");
 
     } else {
       console.log(response.data.status);

@@ -2,9 +2,10 @@ import React, { useState} from 'react';
 import { Link } from "react-router-dom";
 import {isAuthenticated, logOut} from "../../auth/user.tsx";
 import { IconLogout, IconMoon, IconMoonFilled, IconSun, IconUser, IconMenu2 } from '@tabler/icons-react';
-import { Settings } from 'tabler-icons-react';
+import { Cooker, Settings } from 'tabler-icons-react';
 import {useNavContext} from "../shared/NavContext.jsx"
 import { Button } from '@mantine/core';
+import {Logout} from "./Logout.tsx";
 
 
 const Navbar = ({onToggleSidebar}) => {
@@ -13,6 +14,7 @@ const Navbar = ({onToggleSidebar}) => {
   
   const handleLogout = () => {
     logOut();
+
   }
 
   const toggleDark = () => {
@@ -34,7 +36,7 @@ const Navbar = ({onToggleSidebar}) => {
             {isDark ? <IconMoon/> : <IconSun/>}
             </Link>
             <Link to="/user/profile" onClick={undefined} className="p-3 hover:bg-gray-200 "><IconUser/></Link>
-            <Link to="/" onClick={handleLogout} className="p-3 hover:bg-gray-200 hover:text-blue-800 "><IconLogout/></Link> 
+            <Link to="/" className="p-3 hover:bg-gray-200 hover:text-blue-800 "><Logout/></Link> 
           </div>
         ) : (
         <div className="flex space-x-4">  

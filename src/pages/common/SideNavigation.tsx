@@ -26,7 +26,7 @@ import {
 import { Home, Settings, Tools, LayoutDashboard as IconDashboard } from "tabler-icons-react";
 import {FaUser} from 'react-icons/fa';
 import Navbar from './Navbar.tsx';
-import {logout} from "./Logout.tsx";
+
 
 
 const pages = {
@@ -80,13 +80,7 @@ function SideNav({isExpanded}) {
         console.log(currentUser);
         return currentUser;
     }
-    
 
-    const handleLogout = () => {
-        logout();
-        logOut();
-
-      }
 
     useEffect(()=>{
         setUser(getCurrentUser());
