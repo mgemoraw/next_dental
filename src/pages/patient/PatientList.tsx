@@ -41,7 +41,6 @@ const PatientList = (props) => {
     const patientData: patient[] = PatientStore((state: any) => state.data);
 
 
-
     useEffect(() => {
         fetchPatient();
         
@@ -68,13 +67,16 @@ const PatientList = (props) => {
 
     }
     
-    var rows = patientData.map((element: patient, index) => (
-        <Table.Tr className="hover:bg-blue-500 " key={index}>
-            <Table.Td className="border">{index+ 1}</Table.Td>
-            <Table.Td className="border">{element.fname} {element.mname} {element.lname}</Table.Td>
-            <Table.Td className="border">{element.address}</Table.Td>
-            <Table.Td className="border">{element.id}</Table.Td>
-            <Table.Td className="flex">
+    // console.log("Patient Data: ", patientData);
+   var rows:any;
+    if (Array.isArray(patientData) && patientData.length > 0){
+    rows = patientData.map((element: patient, index) => (
+        <tr className="hover:bg-blue-500 " key={index}>
+            <td className="border">{index+ 1}</td>
+            <td className="border">{element.fname} {element.mname} {element.lname}</td>
+            <td className="border">{element.address}</td>
+            <td className="border">{element.id}</td>
+            <td className="flex">
                 <div className="ml-3 hover:text-blue-800 hover:font-bold "
                     onClick={() => handlePatientUpdate(1)} >
                     <IconEdit />
@@ -93,13 +95,13 @@ const PatientList = (props) => {
                     <Dental />
                 </div>
             
-            </Table.Td>
-        </Table.Tr>
+            </td>
+        </tr>
     ));
-
+    }
     return (
         <>
-        { patientData.length > 0 && (
+        { patientData.length > 0 ? (
         <div>
             
             <div className="text-xl font-bold">
@@ -137,6 +139,8 @@ const PatientList = (props) => {
             </div>
         </div>
         
+        ):(
+            <div>Data not found</div>
         )}
     </>
 

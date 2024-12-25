@@ -32,7 +32,11 @@ function ServicesList() {
 
 
 
-    var rows = serviceData.map((element:service, index)=> (
+   var rows:any;
+//     console.log("service Data", serviceData);
+
+    serviceData.length > 0 ? (
+        rows = serviceData.map((element:service, index)=> (
         <tr className="hover:bg-blue-100" key={index} onClick={()=>viewServiceDetail(index)}>
             <td className="border border-slate-300 ">{index + 1}</td>
             <td className="border border-slate-300 ">{element.name}</td>
@@ -52,10 +56,12 @@ function ServicesList() {
                 
             </td>
         </tr>
-    ));
+    ))) : (<></>);
+
+
     return (
         <>
-            {serviceData.length > 0 && (
+            {serviceData.length > 0 ? (
                 <div>
                     <div>Service List</div>
                     <Autocomplete
@@ -79,7 +85,10 @@ function ServicesList() {
                 </div>
             </div>
                 
-            )}
+            ) : (
+                <div>Data not found</div>
+            )
+            }
         </>
     );
 }
